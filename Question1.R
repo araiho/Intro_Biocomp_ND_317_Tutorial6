@@ -1,3 +1,5 @@
+#Question 1
+
 scores <- read.table("/Users/elizabethfortin12/Documents/ND First Year/Biocomputing/Exercise6/UWvMSU_1-22-13.txt",header=TRUE)
 
 tot.score.UW <- as.vector(0)
@@ -27,5 +29,21 @@ library(ggplot2)
 ggplot(data=tot.score,aes(x=time, y=total)) +
   geom_line(aes(colour=team))+
   labs(x='Time', y='Game Score')
+
+
+#Question 2
+
+while (x!=79){
+  x=readline(prompt='guess:')
+  if(x<79){
+    print("Higher") 
+  }
+  else if(x>79){
+    print("Lower")
+  }
+  else {
+    print("Correct!")
+  }
+}
 
 

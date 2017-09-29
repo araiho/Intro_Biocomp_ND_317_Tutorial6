@@ -1,0 +1,19 @@
+##Ex6_1 code
+
+#import data set
+> library(readr)
+> UWvMSU_1_22_13 <- read_delim("C:/cygwin64/Biocomp_R_Working/UWvMSU_1-22-13.csv", 
++     "\t", escape_double = FALSE, trim_ws = TRUE)
+
+#subset data based on team
+> UW.data<-subset(UWvMSU_1_22_13, team == "UW")
+> MSU.data<-subset(UWvMSU_1_22_13, team == "MSU")
+
+#create vector of cumulative scores 
+> MSU.score <- cumsum(MSU.data$score)
+> UW.score <- cumsum(UW.data$score)
+
+#plot scores over time
+> plot(MSU.data$time, MSU.score, xlim = c(0,40), xlab = "Minutes in game", ylab = "Points scored", main = "MSU vs UW Basketball score", type = "l", col = "red")
+> lines(UW.data$time, UW.score, col = "blue")
+> legend(2,40, legend = c("UW", "MSU"), col = c("blue", "red"), lty = 1:1)

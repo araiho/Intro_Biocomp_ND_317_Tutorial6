@@ -20,5 +20,5 @@ for (i in 2:nrow(ScoreMat)){
   }
 }
 
-plot(TimeVec,UWVec,type='l',col="Red")
+plot(TimeVec,UWVec,type='l',col="Red",xlab="Time",ylab="Score")
 lines(TimeVec,MSUVec,col="Green")

@@ -1,27 +1,14 @@
 #load and save data table as "score"
 score=read.table("UWvMSU_1-22-13.txt", header=TRUE)
 
-#create an empty matrix to hold cumulative scores
-cum=matrix(NA,nrow(score),4)
+#separate the UW and MSU scores into their own data tables
+a=subset(score, team=="UW")
+b=subset(score, team=="MSU")
 
-#loop through score data table to generate each team's own column for scoring
+#add another column to both of the two data tables with calculated cumulative score
+a=cbind(a,cumsum(a$score))
+b=cbind(b,cumsum(b$score))
 
-for(i in 1:nrow(score)) {
-  if(grepl("UW",score[i,2])){
-    cum[(i),1]=score[i,3]
-       
-  }else{
-    cum[(i),2]=score[i,3]
-  }
-}
-
-#replace all NA's in the table with 0's
-
-
-#add up each column to make the score cumulative
-
-#plot the cumulative scores on a graph
-
-
-#rename the headers on the data table
-cumulative_score=data.frame(UW_scores=cum[,1],MSU_scores=cum[,2],UW_totalscore=cum[,3], MS_totalscore=cum[,4])
+#plot cumulative score columns from the respective data tables
+plot(a$time,a$`cumsum(a$score)`,type='l',col="red",xlab="time",ylab="score",xlim=c(0,40),ylim=c(0,50))
+lines(b$time,b$`cumsum(b$score)`,col="forestgreen")

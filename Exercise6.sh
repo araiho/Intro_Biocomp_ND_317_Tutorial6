@@ -51,3 +51,36 @@ plot = ggplot(sumScore, aes(sumScore$Time)) +
   theme(plot.title = element_text(hjust = 0.5))
 
 plot
+
+
+
+###Question 2:  "Guess my number!"
+
+#Set a sequence of numbers 1:100 in a variable named "Numbers".
+Numbers <- seq(1:100)
+
+#Generate a random number and addign it a name
+answer <- sample(Numbers,1)
+
+#Prompt user to guess
+guess <- function(){
+as.numeric(readline(prompt = "Guess (must be an integer):"))
+}
+  
+#Read user input
+#return()
+y=0
+y<-guess()
+
+#Do-while loop
+while (y != answer) {
+    if (y<answer) {
+     print("Higher")
+    }
+    else if (y>answer) {
+      print("Lower")
+    }
+  y<-guess()
+  }
+
+print("Correct!")
